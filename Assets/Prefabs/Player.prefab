@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2862596269739395914}
   - component: {fileID: 2862596269739395909}
   - component: {fileID: 2862596269739395908}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2862596269866235941}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 2862596270480615872}
   - component: {fileID: 2862596270480615875}
   - component: {fileID: 2862596270480615874}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 2862596270648611257}
   - component: {fileID: 2862596270648611263}
   - component: {fileID: 2862596270648611262}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 2862596270885372793}
   - component: {fileID: 2862596270885372799}
   - component: {fileID: 2862596270885372798}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2862596271686421913}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,9 +427,10 @@ GameObject:
   - component: {fileID: -550210230479924796}
   - component: {fileID: 8195488706512705916}
   - component: {fileID: 3671017118231223835}
-  m_Layer: 0
+  - component: {fileID: 1052951793875184689}
+  m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -560,6 +561,8 @@ MonoBehaviour:
   - {fileID: 2862596271863218669}
   - {fileID: 2862596270648611263}
   - {fileID: 2862596270648611262}
+  - {fileID: 1052951793875184689}
+  remoteLayerName: RemotePlayer
 --- !u!114 &-550210230479924796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,3 +700,23 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &1052951793875184689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862596271863218664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff71233ec9c94924497f4d55c3c47c38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon:
+    name: Glock-18
+    damage: 10
+    range: 100
+  cam: {fileID: 2862596270648611263}
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
