@@ -4,6 +4,6 @@
 public class playerWeapon
 {
     public string name = "Glock-18";
-    public float damage = 10f;
+    public int damage = 10;
     public float range = 100f;
 }

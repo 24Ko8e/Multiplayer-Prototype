@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
+[RequireComponent(typeof(Player))]
 public class PlayerSetup : NetworkBehaviour
 {
     [SerializeField]
@@ -13,8 +14,6 @@ public class PlayerSetup : NetworkBehaviour
 
     private void Start()
     {
-        registerPlayer();
-
         if (!isLocalPlayer)
         {
             for (int i = 0; i < componentsToDisable.Length; i++)
@@ -34,10 +33,14 @@ public class PlayerSetup : NetworkBehaviour
         }
     }
 
-    void registerPlayer()
+    public override void OnStartClient()
     {
-        string ID = "Player " + GetComponent<NetworkIdentity>().netId;
-        transform.name = ID;
+        base.OnStartClient();
+
+        string _netID = GetComponent<NetworkIdentity>().netId.ToString();
+        Player _player = GetComponent<Player>();
+
+        GameManager.registerPlayer(_netID, _player);
     }
 
     private void OnDisable()
@@ -46,5 +49,7 @@ public class PlayerSetup : NetworkBehaviour
         {
             sceneCamera.gameObject.SetActive(true);
         }
+
+        GameManager.unregisterPlayer(transform.name);
     }
 }
