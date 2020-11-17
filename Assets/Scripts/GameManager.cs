@@ -5,6 +5,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public MatchSettings matchSettings;
+    public static GameManager instance;
+
+    private void Awake()
+    {
+        if (instance)
+        {
+            Destroy(GameObject.Find("GameManager"));
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
+    #region PLAYER_TRACKING
+
     private const string PLAYER_ID_PREFIX = "Player ";
 
     private static Dictionary<string, Player> players = new Dictionary<string, Player>();
@@ -39,4 +56,5 @@ public class GameManager : MonoBehaviour
         GUILayout.EndVertical();
         GUILayout.EndArea();
     }*/
+    #endregion
 }
