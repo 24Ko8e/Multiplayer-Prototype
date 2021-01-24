@@ -280,6 +280,8 @@ MonoBehaviour:
   speed: 5
   lookSensitivity: 3
   thrusterForce: 1300
+  FuelConsumptionRate: 0.8
+  FuelRegenRate: 0.3
   jointMode: 1
   jointSpring: 15
   jointMaxForce: 40
@@ -346,7 +348,6 @@ MonoBehaviour:
   - {fileID: 2862596271863218669}
   - {fileID: 2862596270648611263}
   - {fileID: 2862596270648611262}
-  - {fileID: 1052951793875184689}
   - {fileID: 2350564381696111673}
   - {fileID: 3026221295844256178}
   remoteLayerName: RemotePlayer
@@ -582,7 +583,7 @@ MonoBehaviour:
     range: 60
     weaponObject: {fileID: 8810753804633164327, guid: 2cca0c02db96de2449667e22fe05beba,
       type: 3}
-    fireRate: 2
+    fireRate: 10
 --- !u!1 &4641719111562168816
 GameObject:
   m_ObjectHideFlags: 0

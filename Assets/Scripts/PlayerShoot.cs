@@ -52,10 +52,51 @@ public class PlayerShoot : NetworkBehaviour
         }
     }
 
+    [Command]
+    void CmdOnShoot()
+    {
+        RpcDoShootEffect();
+    }
+
+    [ClientRpc]
+    void RpcDoShootEffect()
+    {
+        if (weaponManager.getCurrentGraphics.muzzleFlash.isPlaying)
+            return;
+
+        weaponManager.getCurrentGraphics.muzzleFlash.Play();
+    }
+    
+    [ClientRpc]
+    void RpcDoHitEffect(Vector3 _pos, Vector3 _normal, string _name)
+    {
+        if (_name.StartsWith("Cube"))
+        {
+            GameObject hitEffect = (GameObject)Instantiate(weaponManager.getCurrentGraphics.hitEffectPrefabs[0], _pos, Quaternion.LookRotation(_normal));
+            Destroy(hitEffect, 5f);
+        }
+        if (_name.StartsWith("Player"))
+        {
+            GameObject hitEffect = (GameObject)Instantiate(weaponManager.getCurrentGraphics.hitEffectPrefabs[1], _pos, Quaternion.LookRotation(_normal));
+            Destroy(hitEffect, 5f);
+        }
+    }
+
+    [Command]
+    void CmdOnHit(Vector3 _pos, Vector3 _normal, string _name)
+    {
+        RpcDoHitEffect(_pos, _normal, _name);
+    }
+
     [Client]
     private void shoot()
     {
-        Debug.Log("Shoot");
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
+        CmdOnShoot();
 
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, currentWeapon.range, mask))
@@ -64,6 +105,8 @@ public class PlayerShoot : NetworkBehaviour
             {
                 CmdPlayerShotCheck(hit.collider.name, currentWeapon.damage);
             }
+
+            CmdOnHit(hit.point, hit.normal, hit.transform.name);
         }
     }
 

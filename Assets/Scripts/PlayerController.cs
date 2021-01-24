@@ -13,6 +13,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float thrusterForce = 1000f;
+    [SerializeField]
+    float FuelConsumptionRate = 1f;
+    [SerializeField]
+    float FuelRegenRate = 0.3f;
+    float fuelAmount = 1f;
+
+    public float GetFuelAmount { get { return fuelAmount; } }
 
     [Header("Spring settings:")]
     [SerializeField]
@@ -48,6 +55,16 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 100f))
+        {
+            joint.targetPosition = new Vector3(0f, -hit.point.y, 0f);
+        }
+        else
+        {
+            joint.targetPosition = Vector3.zero;
+        }
+
         float _xMov = Input.GetAxis("Horizontal");
         float _zMov = Input.GetAxis("Vertical");
 
@@ -73,15 +90,23 @@ public class PlayerController : MonoBehaviour
         motor.RotateCamera(_cameraRotationX);
 
         Vector3 _thrusterForce = Vector3.zero;
-        if (Input.GetButton("Jump"))
+        if (Input.GetButton("Jump") && fuelAmount > 0)
         {
-            _thrusterForce = Vector3.up * thrusterForce;
-            SetJointSettings(0f);
+            fuelAmount -= FuelConsumptionRate * Time.deltaTime;
+
+            if (fuelAmount > 0.1f)
+            {
+                _thrusterForce = Vector3.up * thrusterForce;
+                SetJointSettings(0f);
+            }
         }
         else
         {
+            fuelAmount += FuelRegenRate * Time.deltaTime;
             SetJointSettings(jointSpring);
         }
+        fuelAmount = Mathf.Clamp(fuelAmount, 0f, 1f);
+
         motor.applythruster(_thrusterForce);
     }
 }
