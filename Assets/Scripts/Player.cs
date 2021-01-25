@@ -27,13 +27,39 @@ public class Player : NetworkBehaviour
     [SerializeField]
     GameObject SpawnEffect;
 
-    public void Setup()
+    bool firstSetup = true;
+
+    public void SetupPlayer()
     {
-        wasEnabled = new bool[disableOnDeath.Length];
-        for (int i = 0; i < wasEnabled.Length; i++)
+        if (isLocalPlayer)
         {
-            wasEnabled[i] = disableOnDeath[i].enabled;
+            GameManager.instance.setSceneCameraState(false);
+            GetComponent<PlayerSetup>().playerUI_inst.SetActive(true);
         }
+
+        CmdBroadcastNewPlayerSetup();
+    }
+
+    [Command]
+    void CmdBroadcastNewPlayerSetup()
+    {
+        RpcSetupPlayerOnAllClients();
+    }
+
+    [ClientRpc]
+    void RpcSetupPlayerOnAllClients()
+    {
+        if (firstSetup)
+        {
+            wasEnabled = new bool[disableOnDeath.Length];
+            for (int i = 0; i < wasEnabled.Length; i++)
+            {
+                wasEnabled[i] = disableOnDeath[i].enabled;
+            }
+
+            firstSetup = false;
+        }
+
         setDefaults();
     }
 
@@ -105,7 +131,9 @@ public class Player : NetworkBehaviour
         transform.position = _spawnPoint.position;
         transform.rotation = _spawnPoint.rotation;
 
-        setDefaults();
+        yield return new WaitForSeconds(0.1f);
+
+        SetupPlayer();
     }
 
     public void setDefaults()
@@ -126,12 +154,6 @@ public class Player : NetworkBehaviour
         if (_collider)
         {
             _collider.enabled = true;
-        }
-
-        if (isLocalPlayer)
-        {
-            GameManager.instance.setSceneCameraState(false);
-            GetComponent<PlayerSetup>().playerUI_inst.SetActive(true);
         }
 
         GameObject spawnFX = (GameObject)Instantiate(SpawnEffect, new Vector3(transform.position.x, 0f, transform.position.z), Quaternion.identity);
