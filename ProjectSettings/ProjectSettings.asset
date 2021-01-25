@@ -641,10 +641,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: d83565f9-cc76-4507-aa13-5c6061a6a6bd
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Multiplayer Demo
+  organizationId: bean-studio-as-publisher
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
