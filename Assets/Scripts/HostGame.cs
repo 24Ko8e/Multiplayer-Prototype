@@ -29,4 +29,9 @@ public class HostGame : MonoBehaviour
             networkManager.matchMaker.CreateMatch(roomName, roomSize, true, "", "", "", 0, 0, networkManager.OnMatchCreate);
         }
     }
+
+    public void QuitApplication()
+    {
+        Application.Quit();
+    }
 }
