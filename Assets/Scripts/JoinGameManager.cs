@@ -78,4 +78,12 @@ public class JoinGameManager : MonoBehaviour
 
         roomList.Clear();
     }
+    public void QuitApplication()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 }
