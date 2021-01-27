@@ -55,6 +55,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (PauseMenu.isPaused)
+            return;
+
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 100f))
         {

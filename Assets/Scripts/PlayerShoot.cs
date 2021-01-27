@@ -32,6 +32,9 @@ public class PlayerShoot : NetworkBehaviour
 
         _timer -= Time.deltaTime;
 
+        if (PauseMenu.isPaused)
+            return;
+
         if (currentWeapon.fireRate == 0)
         {
             if (Input.GetButtonDown("Fire1"))
