@@ -69,16 +69,17 @@ public class PlayerShoot : NetworkBehaviour
 
         weaponManager.getCurrentGraphics.muzzleFlash.Play();
     }
-    
+
     [ClientRpc]
     void RpcDoHitEffect(Vector3 _pos, Vector3 _normal, string _name)
     {
-        if (_name.StartsWith("Cube"))
+
+        if (_name.StartsWith("Floor"))
         {
             GameObject hitEffect = (GameObject)Instantiate(weaponManager.getCurrentGraphics.hitEffectPrefabs[0], _pos, Quaternion.LookRotation(_normal));
             Destroy(hitEffect, 5f);
         }
-        if (_name.StartsWith("Player"))
+        else
         {
             GameObject hitEffect = (GameObject)Instantiate(weaponManager.getCurrentGraphics.hitEffectPrefabs[1], _pos, Quaternion.LookRotation(_normal));
             Destroy(hitEffect, 5f);
