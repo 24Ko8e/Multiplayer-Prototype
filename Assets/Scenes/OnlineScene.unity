@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.02
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -33,7 +33,7 @@ RenderSettings:
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
-  m_DefaultReflectionResolution: 128
+  m_DefaultReflectionResolution: 1024
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -56,10 +56,10 @@ LightmapSettings:
   m_LightmapEditorSettings:
     serializedVersion: 12
     m_Resolution: 2
-    m_BakeResolution: 40
+    m_BakeResolution: 1024
     m_AtlasSize: 1024
-    m_AO: 0
-    m_AOMaxDistance: 1
+    m_AO: 1
+    m_AOMaxDistance: 50
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
     m_ExtractAmbientOcclusion: 0
@@ -798,7 +798,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1360,7 +1360,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1634,6 +1634,16 @@ PrefabInstance:
       propertyPath: InitialModule.startRotationY.minMaxState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 168815871020899378, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 401642259509992531, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 726792729532741114, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -1644,6 +1654,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -3.002824
       objectReference: {fileID: 0}
+    - target: {fileID: 1187395545324107177, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190649910572156526, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2648914568053096695, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -1653,6 +1673,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 4.197819
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818563754978622749, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016787057193895824, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569965326284382253, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658199802109152706, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730174874844113294, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086828414082125701, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5920665226186556032, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
         type: 3}
@@ -1668,6 +1718,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7573060242936209324, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7990805280788012482, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045642333762506244, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8106967427639829300, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
         type: 3}
@@ -1729,11 +1794,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arena Model
       objectReference: {fileID: 0}
+    - target: {fileID: 8106967427640065814, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106967427640065910, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106967427640065912, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8106967427649408212, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 1dd43911d514f8240bfc3455cc05cf4e, type: 2}
+    - target: {fileID: 8458179434926679255, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 9123151408338472903, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17fd4bb2618f3514fa90e9a3ae28d1c5, type: 3}
 --- !u!1 &1715395300
