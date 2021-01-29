@@ -16,6 +16,9 @@ public class Player : NetworkBehaviour
     [SyncVar]
     private int currentHealth;
 
+    public int kills;
+    public int deaths;
+    
     [SerializeField]
     private Behaviour[] disableOnDeath;
     [SerializeField]
@@ -77,7 +80,7 @@ public class Player : NetworkBehaviour
     }*/
 
     [ClientRpc]
-    public void RpctakeDamage(int _amount)
+    public void RpctakeDamage(int _amount, string _sourceID)
     {
         if (isDead)
         {
@@ -87,13 +90,19 @@ public class Player : NetworkBehaviour
         Debug.Log(transform.name + " now has " + currentHealth + " health. ");
         if (currentHealth <= 0)
         {
-            Die();
+            Die(_sourceID);
         }
     }
 
-    private void Die()
+    private void Die(string killer)
     {
         isDead = true;
+
+        Player sourcePlayer = GameManager.GetPlayer(killer);
+        
+        if (sourcePlayer != null)
+            sourcePlayer.kills += 1;
+        deaths += 1;
 
         for (int i = 0; i < disableOnDeath.Length; i++)
         {

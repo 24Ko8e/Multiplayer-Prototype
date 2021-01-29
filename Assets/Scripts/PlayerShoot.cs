@@ -107,7 +107,7 @@ public class PlayerShoot : NetworkBehaviour
         {
             if (hit.collider.tag == "Player")
             {
-                CmdPlayerShotCheck(hit.collider.name, currentWeapon.damage);
+                CmdPlayerShotCheck(hit.collider.name, currentWeapon.damage, transform.name);
             }
 
             CmdOnHit(hit.point, hit.normal, hit.transform.name);
@@ -115,10 +115,10 @@ public class PlayerShoot : NetworkBehaviour
     }
 
     [Command]
-    void CmdPlayerShotCheck(string _playerID, int _damage)
+    void CmdPlayerShotCheck(string _playerID, int _damage, string _sourcePlayerID)
     {
         Debug.Log(_playerID + " has been shot");
         Player _player = GameManager.GetPlayer(_playerID);
-        _player.RpctakeDamage(_damage);
+        _player.RpctakeDamage(_damage, _sourcePlayerID);
     }
 }

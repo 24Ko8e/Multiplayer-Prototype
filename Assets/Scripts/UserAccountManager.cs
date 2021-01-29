@@ -40,6 +40,8 @@ public class UserAccountManager : MonoBehaviour
     public string OnLogInSceneName = "MatchSearchScene";
     public string OnLogOutSceneName = "UACscene";
 
+    public delegate void OnDataRetrievedCallback(string data);
+
     public void Logout()
     {
         playerUsername = "";
@@ -61,12 +63,12 @@ public class UserAccountManager : MonoBehaviour
         SceneManager.LoadScene(OnLogInSceneName);
     }
 
-    public void GetUserData()
+    public void GetUserData(OnDataRetrievedCallback onDataReceived)
     {
         if(IsLoggedIn)
-            StartCoroutine(GetData());
+            StartCoroutine(GetData(onDataReceived));
     }
-    IEnumerator GetData()
+    IEnumerator GetData(OnDataRetrievedCallback onDataReceived)
     {
         IEnumerator e = DCF.GetUserData(playerUsername, playerPassword); // << Send request to get the player's data string. Provides the username and password
         while (e.MoveNext())
@@ -92,7 +94,9 @@ public class UserAccountManager : MonoBehaviour
             //loadingParent.gameObject.SetActive(false);
             //loggedInParent.gameObject.SetActive(true);
             //LoggedIn_DataOutputField.text = response;
-            playerData = response;
+            
+            if (onDataReceived != null)
+                onDataReceived.Invoke(response);
         }
     }
 
