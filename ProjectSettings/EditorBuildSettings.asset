@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Lobby.unity
+    path: Assets/Scenes/UACscene.unity
+    guid: 98d52eccd0854d440a3b4b5a39b93f97
+  - enabled: 1
+    path: Assets/Scenes/MatchSearchScene.unity
     guid: eca91082058507e4bbdafd46e5865f8e
   - enabled: 1
     path: Assets/Scenes/OnlineScene.unity
