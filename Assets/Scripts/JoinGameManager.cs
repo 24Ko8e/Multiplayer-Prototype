@@ -78,7 +78,7 @@ public class JoinGameManager : MonoBehaviour
     {
         ClearRoomList();
 
-        int countdown = 11;
+        int countdown = 25;
         while (countdown > 0)
         {
             status.text = "Joining room in... " + countdown;
@@ -108,6 +108,7 @@ public class JoinGameManager : MonoBehaviour
 
         roomList.Clear();
     }
+
     public void QuitApplication()
     {
 #if UNITY_EDITOR
