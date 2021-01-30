@@ -56,7 +56,17 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (PauseMenu.isPaused)
+        {
+            if (Cursor.lockState != CursorLockMode.None)
+                Cursor.lockState = CursorLockMode.None;
+
             return;
+        }
+
+        if(Cursor.lockState != CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
 
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 100f))

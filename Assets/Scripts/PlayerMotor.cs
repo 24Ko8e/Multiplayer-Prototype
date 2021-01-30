@@ -37,6 +37,9 @@ public class PlayerMotor : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (PauseMenu.isPaused)
+            return;
+
         PerformMovement();
         PerformRotation();
         PerformThrust();

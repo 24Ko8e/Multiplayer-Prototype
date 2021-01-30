@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6390297775558794603}
   - component: {fileID: 6390297775558794604}
   - component: {fileID: 6390297775558794605}
-  - component: {fileID: 6390297774835695778}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -58,7 +57,7 @@ MonoBehaviour:
     type: 3}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 1
-  m_OfflineScene: Lobby
+  m_OfflineScene: MatchSearchScene
   m_OnlineScene: OnlineScene
   m_SpawnPrefabs: []
   m_CustomConfig: 0
@@ -132,16 +131,3 @@ MonoBehaviour:
   showGUI: 0
   offsetX: 0
   offsetY: 0
---- !u!114 &6390297774835695778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6390297775558794602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79a8dbf1a878b064ab4200007a68c350, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roomSize: 4
