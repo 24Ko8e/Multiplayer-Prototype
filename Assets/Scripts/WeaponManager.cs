@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using System;
 
 public class WeaponManager : NetworkBehaviour
 {
@@ -13,7 +14,7 @@ public class WeaponManager : NetworkBehaviour
     playerWeapon currentWeapon;
     WeaponGraphics currentGraphics;
 
-    bool isReloading = false;
+    public bool isReloading = false;
 
     private void Start()
     {
@@ -53,10 +54,27 @@ public class WeaponManager : NetworkBehaviour
     IEnumerator IEreload()
     {
         isReloading = true;
+        CmdOnReload();
 
         yield return new WaitForSeconds(currentWeapon.reloadTime);
         currentWeapon.currentBullets = currentWeapon.maxBullets;
 
         isReloading = false;
+    }
+
+    [Command]
+    void CmdOnReload()
+    {
+        RpcOnReload();
+    }
+
+    [ClientRpc]
+    private void RpcOnReload()
+    {
+        Animator anim = currentGraphics.GetComponent<Animator>();
+        if (anim != null)
+        {
+            anim.SetTrigger("Reload");
+        }
     }
 }

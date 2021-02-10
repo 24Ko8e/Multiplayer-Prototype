@@ -35,6 +35,15 @@ public class PlayerShoot : NetworkBehaviour
         if (PauseMenu.isPaused)
             return;
 
+        if (currentWeapon.currentBullets < currentWeapon.maxBullets)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                weaponManager.Reload();
+                return;
+            }
+        }
+
         if (currentWeapon.fireRate == 0)
         {
             if (Input.GetButtonDown("Fire1"))
@@ -95,7 +104,7 @@ public class PlayerShoot : NetworkBehaviour
     [Client]
     private void shoot()
     {
-        if (!isLocalPlayer)
+        if (!isLocalPlayer && !weaponManager.isReloading)
         {
             return;
         }

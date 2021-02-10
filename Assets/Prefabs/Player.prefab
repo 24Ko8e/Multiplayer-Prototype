@@ -131,7 +131,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 65
   orthographic: 0
@@ -524,6 +524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  username: Loading...
   kills: 0
   deaths: 0
   disableOnDeath:
@@ -594,6 +595,9 @@ MonoBehaviour:
     weaponObject: {fileID: 8810753804633164327, guid: 2cca0c02db96de2449667e22fe05beba,
       type: 3}
     fireRate: 10
+    reloadTime: 1
+    maxBullets: 20
+    currentBullets: 20
 --- !u!114 &-1081495134365288863
 MonoBehaviour:
   m_ObjectHideFlags: 0
