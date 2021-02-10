@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Player))]
 public class PlayerScore : MonoBehaviour
 {
+    int lastKills = 0;
+    int lastDeaths = 0;
+
     Player player;
 
     void Start()
@@ -26,19 +29,22 @@ public class PlayerScore : MonoBehaviour
 
     void OnDataReceived(string data)
     {
-        if (player.kills == 0 && player.deaths == 0)
+        if (player.kills <= lastKills && player.deaths <= lastDeaths)
             return;
+
+        int killsSinceLastSync = player.kills - lastKills;
+        int deathsSinceLastSync = player.deaths - lastDeaths;
 
         int kills = DataTranslator.retrieveKillCount(data);
         int deaths = DataTranslator.retrieveDeathCount(data);
 
-        int newKills = player.kills + kills;
-        int newDeaths = player.deaths + deaths;
+        int newKills = killsSinceLastSync + kills;
+        int newDeaths = deathsSinceLastSync + deaths;
 
         string newData = DataTranslator.encodeToData(newKills, newDeaths);
 
-        player.kills = 0;
-        player.deaths = 0;
+        lastKills = player.kills;
+        lastDeaths = player.deaths;
 
         Debug.Log("Starting sync: " + newData);
         UserAccountManager.instance.SetUserData(newData);

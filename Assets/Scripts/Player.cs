@@ -15,6 +15,8 @@ public class Player : NetworkBehaviour
     private int maxHealth = 100;
     [SyncVar]
     private int currentHealth;
+    [SyncVar]
+    public string username = "Loading...";
 
     public int kills;
     public int deaths;

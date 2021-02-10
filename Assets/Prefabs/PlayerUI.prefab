@@ -241,7 +241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6015191731409171143
 RectTransform:
   m_ObjectHideFlags: 0
@@ -311,6 +311,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eb4bec20bd70da4a833341f7ccc8513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerScoreBoardItemPrefab: {fileID: 4893567087135149855, guid: 9a4987f25f1047a4c9daf10d12981d4b,
+    type: 3}
+  playerListParent: {fileID: 5175192985513562977}
 --- !u!1 &2346438087650094543
 GameObject:
   m_ObjectHideFlags: 0
