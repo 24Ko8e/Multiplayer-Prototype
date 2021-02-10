@@ -101,9 +101,13 @@ public class Player : NetworkBehaviour
         isDead = true;
 
         Player sourcePlayer = GameManager.GetPlayer(killer);
-        
+
         if (sourcePlayer != null)
+        {
             sourcePlayer.kills += 1;
+            GameManager.instance.onPlayerKilledCallback.Invoke(username, sourcePlayer.username);
+        }
+
         deaths += 1;
 
         for (int i = 0; i < disableOnDeath.Length; i++)
