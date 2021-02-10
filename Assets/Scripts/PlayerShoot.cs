@@ -100,6 +100,13 @@ public class PlayerShoot : NetworkBehaviour
             return;
         }
 
+        if (currentWeapon.currentBullets <= 0)
+        {
+            weaponManager.Reload();
+            return;
+        }
+        currentWeapon.currentBullets--;
+
         CmdOnShoot();
 
         RaycastHit hit;

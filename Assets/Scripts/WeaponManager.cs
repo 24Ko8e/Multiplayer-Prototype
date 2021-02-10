@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using System.Collections;
 
 public class WeaponManager : NetworkBehaviour
 {
@@ -11,6 +12,8 @@ public class WeaponManager : NetworkBehaviour
     playerWeapon primaryWeapon;
     playerWeapon currentWeapon;
     WeaponGraphics currentGraphics;
+
+    bool isReloading = false;
 
     private void Start()
     {
@@ -35,5 +38,25 @@ public class WeaponManager : NetworkBehaviour
         {
             Util.setLayerRecursively(_weaponInst, LayerMask.NameToLayer(weaponLayerName));
         }
+    }
+
+    public void Reload()
+    {
+        if (isReloading)
+        {
+            return;
+        }
+
+        StartCoroutine(IEreload());
+    }
+
+    IEnumerator IEreload()
+    {
+        isReloading = true;
+
+        yield return new WaitForSeconds(currentWeapon.reloadTime);
+        currentWeapon.currentBullets = currentWeapon.maxBullets;
+
+        isReloading = false;
     }
 }

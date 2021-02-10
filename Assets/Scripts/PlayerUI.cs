@@ -45,6 +45,7 @@ public class PlayerUI : MonoBehaviour
     {
         pauseMenu.SetActive(!pauseMenu.activeSelf);
         PauseMenu.isPaused = pauseMenu.activeSelf;
+
     }
 
     void SetFuelAmount(float _amount)
