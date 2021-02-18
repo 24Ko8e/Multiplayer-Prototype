@@ -34,6 +34,11 @@ public class Player : NetworkBehaviour
 
     bool firstSetup = true;
 
+    public float GetHealthPercentage()
+    {
+        return (float)currentHealth / maxHealth;
+    }
+
     public void SetupPlayer()
     {
         if (isLocalPlayer)

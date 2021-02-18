@@ -104,7 +104,7 @@ public class PlayerShoot : NetworkBehaviour
     [Client]
     private void shoot()
     {
-        if (!isLocalPlayer && !weaponManager.isReloading)
+        if (!isLocalPlayer || weaponManager.isReloading)
         {
             return;
         }
@@ -127,6 +127,11 @@ public class PlayerShoot : NetworkBehaviour
             }
 
             CmdOnHit(hit.point, hit.normal, hit.transform.name);
+        }
+
+        if (currentWeapon.currentBullets <= 0)
+        {
+            weaponManager.Reload();
         }
     }
 
